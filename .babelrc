@@ -1,0 +1,52 @@
+{
+  "presets": [
+    ["env", {"modules": false}],
+    "stage-0",
+    "react"
+  ],
+  "env": {
+    "development": {
+      "plugins": [
+        ["styled-components", { "displayName": true }]
+      ]
+    },
+    "test": {
+      "plugins": [
+        "transform-regenerator",
+        "transform-runtime",
+        "transform-es2015-modules-commonjs",
+        "add-module-exports"
+      ]
+    },
+    "production": {
+      "plugins": [
+        "transform-react-remove-prop-types"
+      ]
+    }
+  },
+  "compact": false,
+  "plugins": [
+    ["styled-components", { "displayName": true }],
+    "transform-regenerator",
+    "react-loadable/babel",
+    ["transform-imports", {
+      "lodash": {
+        "transform": "lodash/${member}",
+        "preventFullImport": true
+      },
+      "routes": {
+        "transform": "routes/${member}",
+        "preventFullImport": true
+      },
+      "models": {
+        "transform": "models/${member}",
+        "preventFullImport": true
+      },
+      "components": {
+        "transform": "components/${member}",
+        "preventFullImport": true
+      }
+    }],
+    "syntax-dynamic-import"
+  ]
+}
